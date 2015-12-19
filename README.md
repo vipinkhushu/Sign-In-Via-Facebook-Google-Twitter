@@ -1,2 +1,4 @@
-# SignInViaFacebookAndGoogle
-Login System Powered By Facebook And Google Using PHP APIS
+# Sign In Via Facebook And Google 
+ 
+#### Developed Using PHP APIS Of Facebook And Google With Latest OAuth Authentication Method.
+
