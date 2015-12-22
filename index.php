@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Google And Facebook Powered Login System For PHP Websites </title>
+        <title>Google And Facebook And Twitter Powered Login System For PHP Websites </title>
         
         <!-- The stylesheets -->
         <link rel="stylesheet" href="assets/css/styles.css" />
@@ -16,7 +16,7 @@
     
     <body>
 
-		<h1>Login With Facebook Or Google</h1>
+		<h1>Login With Facebook Or Google Or Twitter</h1>
         <div id="main">
 			
 			
@@ -38,9 +38,8 @@
 					$loginUrl = $helper->getLoginUrl($incommingurl, $permissions);
 
 					/******Printing The Login URL**************/
-					echo '<a href="' . $loginUrl . '"><img src="assets/img/facebook-login-button.png" alt="Login With Facebook" title="Login With Facebook"></a>';
+					echo'<a href="' . $loginUrl . '" class="facebookLoginButton" title="Login With Facebook">Sign in with Facebook</a>';
 					?>
-						<br/>
 
 					<?php
 					/******Importing Google API Files**************/
@@ -58,11 +57,13 @@
 					$oauth2 = new apiOauth2Service($client);
 					?>	
 					<!--******Printing The Login URL*************-->
-            		<a href="<?php echo $client->createAuthUrl()?>" class="googleLoginButton">Sign in with Google</a>
+            		<a href="<?php echo $client->createAuthUrl()?>" class="googleLoginButton" title="Login With Google">Sign in with Google</a>
 
-
-        </div>
-		<p class="note">This Websites Uses The PHP APIS Of <a href="https://developers.facebook.com/docs/reference/php" target="_new">Facebook</a>   And <a href="https://developers.google.com/api-client-library/php/start/get_started" target="_new">Google</a> To Create The Login System.</p>
+            		<!--******Printing The Login URL*************-->
+        			<a href="collectUserDataTwitter.php" class="twitterLoginButton" title="Login With Twitter">Sign in with Twitter</a>
+        		
+            		</div>
+		<p class="note">This Websites Uses The PHP APIS Of <a href="https://developers.facebook.com/docs/reference/php" target="_new">Facebook</a>   And <a href="https://developers.google.com/api-client-library/php/start/get_started" target="_new">Google</a> And <a href="http://wwwtwitteroauth.com" target="_new">Twitter</a> To Create The Login System.</p>
 
         <footer>
 	        <h2><i>Author:</i><a href="http://www.vipinkhushu.com"> Vipin Khushu </a> | RAPL IND.( vipinkhushu[at]hotmail.com )</h2>

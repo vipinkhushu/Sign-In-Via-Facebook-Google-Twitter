@@ -12,7 +12,8 @@
 	$client->setClientSecret($client_secret);
 	$client->setDeveloperKey($api_key);
 	$client->setRedirectUri($redirect_url);
-	$client->setApprovalPrompt(false);
+	$client->setAccessType('online');
+ 	$client->setApprovalPrompt('auto') ;
 	$oauth2 = new apiOauth2Service($client);
 	/******Waiting For OAuth Token And Then Authenticating**************/
 			if (isset($_GET['code'])) {

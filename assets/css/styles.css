@@ -46,7 +46,7 @@ section, footer, header{
 	box-shadow:0 1px 1px #ccc, 0 0 2px #ccc;
 	border-radius:2px 2px 5px 5px;
 	width:350px;
-	height:210px;
+	height:305px;
 	padding-top:45px;
 	text-align:center;
 	margin:30px auto 10px;
@@ -60,12 +60,12 @@ h1{
 }
 
 a.googleLoginButton{
-	box-shadow:0 1px 1px #ccc;
+	
 	border-radius:3px;
-	margin-top:45px;
+	margin-top:25px;
 	display:inline-block;
-	width:253px;
-	height:62px;
+	width:245px;
+	height:50px;
 	background:url('../img/google-login-button.png') no-repeat;
 	text-indent:-9999px;
 	overflow:hidden;
@@ -74,7 +74,36 @@ a.googleLoginButton{
 a.googleLoginButton:hover{
 	opacity:0.9;
 }
+a.facebookLoginButton{
+	
+	border-radius:3px;
+	margin-top:25px;
+	display:inline-block;
+	width:245px;
+	height:50px;
+	background:url('../img/facebook-login-button.png') no-repeat;
+	text-indent:-9999px;
+	overflow:hidden;
+}
 
+a.facebookLoginButton:hover{
+	opacity:0.9;
+}
+a.twitterLoginButton{
+	
+	border-radius:3px;
+	margin-top:25px;
+	display:inline-block;
+	width:245px;
+	height:50px;
+	background:url('../img/twitter-login-button.png') no-repeat;
+	text-indent:-9999px;
+	overflow:hidden;
+}
+
+a.twitterLoginButton:hover{
+	opacity:0.9;
+}
 p.greeting{
 	font:20px 'Open Sans Condensed', sans-serif;
 	color:#565656;
