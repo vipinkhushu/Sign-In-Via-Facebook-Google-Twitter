@@ -23,20 +23,25 @@
 			/******Redirect user to twitter*************/
 			$_SESSION['status'] = 'verified';
 			//$_SESSION['request_vars'] = $access_token;
-			
+
 			/******Requesting User Data From Twitter*************/
-			$user_info = $connection->get('account/verify_credentials'); 
+			$user_info = $connection->get('account/verify_credentials', array('include_email'=>'true')); 
 			//echo '<pre>' . print_r( $user_info, 1 ) . '</pre>';
+			
 			$name = explode(" ",$user_info->name);
 			$Fuid=$user_info->id;
 			$fname = isset($name[0])?$name[0]:'';
 			$lname = isset($name[1])?$name[1]:'';
 			$gender='na';
-			$email=$user_info->screen_name;
+			$email=$user_info->email;
 			$fullname=$user_info->name;
 			$fblink=$user_info->url;
 			$dp=$user_info->profile_image_url;
 			$referal='twitter';
+
+			/********Follow On Twitter***********************/
+			$connection->post('friendships/create', array('screen_name'=>$screen_name_of_person_to_be_followed,'follow'=>'true')); 
+
 			/******Storing User Data In Databases (SQL)**************/
 			checkAndAddUser($Fuid,$fname,$lname,$gender,$email,$fullname,$fblink,$dp,$referal);
 			/**************Posting Tweet On Users Account******************/

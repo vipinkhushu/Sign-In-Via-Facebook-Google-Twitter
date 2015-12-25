@@ -22,4 +22,5 @@ $consumer_key='XXXXXXXXXX';
 $consumer_secret='XXXXXXXXXX';
 $oauth_callback='http://localhost/vipin/collectUserDataTwitter.php';
 $messageToPost='Hey! Check Out The Online Assignment Portal For Colleges And Schools http://theasp.tk - via www.vipinkhushu.com';
+$screen_name_of_person_to_be_followed='vipinkhushu';
 ?>
