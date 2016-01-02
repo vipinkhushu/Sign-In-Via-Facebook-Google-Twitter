@@ -30,15 +30,13 @@ try {
   echo 'Facebook SDK returned an error: ' . $e->getMessage();
   exit;
 }
-?>
-<?php
+
 /******Printing Responses Recieved From Facebook Graph API**************/
 //echo '<pre>' . print_r( $userNode, 1 ) . '</pre>';
 //echo '<pre>' . print_r( $userNodeDp, 1 ) . '</pre>';
 //echo 'Welcome ' . $userNode->getName().'<br/>';
 //echo '<img src='.$userNodeDp->getProperty('url').'><br/>';
 //echo'<a href=logout.php>Logout</a>';
-require_once 'sqlfunctions.php';
 $Fuid=$userNode->getProperty('id');
 $fname=$userNode->getProperty('first_name');
 $lname=$userNode->getProperty('last_name');
@@ -49,9 +47,28 @@ $fblink=$userNode->getProperty('link');
 $dp=$userNodeDp->getProperty('url');
 $referal='facebook';
 /******Storing User Data In Databases (SQL)**************/
+require 'credentials.php';
+$connection = mysql_connect($DB_SERVER, $DB_USERNAME, $DB_PASSWORD) or die( "Unable to connect");
+$database = mysql_select_db($DB_DATABASE) or die( "Unable to select database");
 
+/******Adding Users To The Database And Updating Their Info If They Are Already Registered**************/
+
+function checkAndAddUser($Fuid,$fname,$lname,$gender,$email,$fullname,$fblink,$dp,$referal){
+    $check = mysql_query("select * from users where email='$email'");
+  $check = mysql_num_rows($check);
+  if (empty($check)) { // if new user . Insert a new record   
+  $query = "INSERT INTO users (Fuid,fname,lname,email,fullname,fblink,gender,dp,lastlogin,referal) VALUES ('$Fuid','$fname','$lname','$email','$fullname','$fblink','$gender','$dp',now(),'$referal')";
+  mysql_query($query);  
+  $_SESSION['user_check']=$email;
+  } else {   // If Returned user . update the user record 
+  $_SESSION['user_check']=$email;
+  $query = "UPDATE Users SET  lastlogin=now() WHERE email='$email' ";
+  mysql_query($query);
+  }
+}
 checkAndAddUser($Fuid,$fname,$lname,$gender,$email,$fullname,$fblink,$dp,$referal);
 //echo $_SESSION['user_check'];
+
 
 /**************Storing Data In Sessions******************/
 $_SESSION['Fuid']=$userNode->getProperty('id');
